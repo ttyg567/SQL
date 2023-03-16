@@ -1,0 +1,25 @@
+SELECT * FROM EMP;
+
+SELECT EMPNO
+, ENAME
+, DEPTNO
+FROM EMP;
+
+/*
+ * EMP table
+ */
+SELECT ENAME   -- ename;
+	, SAL*3    -- quarterly
+	, COMM     -- commision: why? WHEN?
+	FROM EMP;
+	
+
+
+ALTER USER SCOTT IDENTIFIED BY tiger
+ACCOUNT UNLOCK;
+
+CONN SCOTT/TIGER;
+
+DESC EMP;
+
+EXIT;
