@@ -1,13 +1,10 @@
--- 과제
 -- Q1-1 (1) 논리 설계 (2) 데이터 모델링
 -- Q1-2 (1) E-R 모델 (2) E-R 모델 (3) Entity
--- Q1-3 (1) ERD(ER DIAGRAM) (2) 관계
--- Q1-4 (1) 관계차수 (2) 관계선택사양
+-- Q1-3 (1) E-R Diagram (2) 관계
+-- Q1-4 (1) 카디널리티 (2) 옵셔널리티
 -- Q1-5 (1) 스키마 (2) 테이블
 -- Q1-6 (1) 테이블 (2) 인덱스 (3) 시퀀스
  
-
-
 
 -- EMP 테이블 출력하기
 SELECT EMPNO AS "EMPLOYEE_NO", ENAME AS "EMPLOYEE_NAME", JOB, MGR AS "MANAGER", HIREDATE, SAL AS "SALARY", COMM AS "COMMISION", DEPTNO AS "DEPARTMENT_NO"
