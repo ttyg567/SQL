@@ -491,6 +491,93 @@ SELECT MIN(sal), MAX(sal)
  						WHERE DEPTNO = 30)
 ;
 
+SELECT *
+FROM EMP e 
+WHERE sal < ANY (SELECT SAL
+ 						FROM EMP e
+ 						WHERE DEPTNO = 30)
+;
+
+
+/*
+ * 다중열 서브 쿼리
+ * 
+ * 서브 쿼리 결과가 두 개 이상의 컬럼으로 구성된 테이블 값
+ */
+
+SELECT *
+ FROM emp
+ WHERE (deptno, sal) IN (SELECT deptno, MAX(sal)
+ 						  FROM EMP e
+ 						  GROUP BY deptno)
+; 
+
+
+/*
+ * FROM 절에 사용되는 서브 쿼리
+ */
+
+SELECT A.empno
+	, A.sal
+	, B.dname
+ FROM (SELECT * FROM emp WHERE deptno = 30) A
+ 	, (SELECT * FROM dept) B
+ WHERE A.deptno = B.deptno
+ ;
+
+/* 
+ * WITH 절 : 편리한 가상 테이블로 활용
+ */
+
+WITH E AS (SELECT * FROM emp WHERE deptno = 20)
+	, D AS (SELECT * FROM dept)
+	, S AS (SELECT * FROM salgrade)
+SELECT  E.ename
+	, D.dname
+	, E.sal
+	, D.loc
+	, S.grade
+ FROM E, D, S
+ WHERE E.deptno = D.deptno
+ 	AND E.sal BETWEEN S.losal AND S.hisal
+ ;
+
+
+/* 
+ * CREATE TABLE
+ */
+
+CREATE TABLE dept_temp
+ AS SELECT * FROM dept;  --기존 dept 테이블을 복사하여 새로운 테이블 만들기
+
+SELECT *
+ FROM dept_temp;
+
+-- COMMIT;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
