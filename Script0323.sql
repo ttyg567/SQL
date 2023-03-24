@@ -255,17 +255,17 @@ SELECT deptno
 
 SELECT *
  FROM (SELECT deptno,
-			, max(decode (job, 'CLERK', sal)) AS "clerk"
-			, max(decode (job, 'SALESMAN', sal)) AS "sales"
-			, max(decode (job, 'PRESIDENT', sal)) AS "presi"
-			, max(decode (job, 'MANAGER', sal)) AS "mgr"
-			, max(decode (job, 'ANALYST', sal)) AS "ana"
+			, max(decode (job, 'CLERK', sal)) AS "CLERK"
+			, max(decode (job, 'SALESMAN', sal)) AS "SALES"
+			, max(decode (job, 'PRESIDENT', sal)) AS "PRESI"
+			, max(decode (job, 'MANAGER', sal)) AS "MGR"
+			, max(decode (job, 'ANALYST', sal)) AS "ANA"
 		 FROM emp
 		 GROUP BY deptno
 		 ORDER BY deptno)
-unpivot(sal FOR job IN (clerk, sales, presi, mgr, ana1)
-)
-ORDER BY deptno, job;
+unpivot(sal FOR job IN (CLERK, SALES, PRESI, MGR, ANA))
+ORDER BY deptno, job
+;
 
 
 SELECT deptno
